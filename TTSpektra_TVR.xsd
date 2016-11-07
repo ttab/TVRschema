@@ -1,0 +1,1093 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.ttspektra.se" 
+	xmlns="http://www.ttspektra.se" 
+	elementFormDefault="qualified">
+
+	<xsd:annotation><xsd:documentation>
+		<Version>2014:25:b</Version>
+		<redigerad av="jl" datum="2014-06-17T08:00:00">Lade till headlines i reviews.
+		                                               Lade till RegistryReferenceID på personer 
+		                                               Gjorde Filename frivilligt.
+		                                               Satte Rank i Function till DEPRECATED
+		                                               CreatedDate och ChangedDate i Review sattes till DEPRECATED.</redigerad>
+		<redigerad av="jl" datum="2013-12-12T15:00:00">Lade till nya element och attribut för sport i tv mm
+		                                               @InternalId på TVRProgramBroadcast och TVRBroadcast
+		                                               Värdet Relaterade i DirectionEnumList
+		                                               Elementet Puff i Version
+		                                               Värdena Domare, Regerande mästare, Svensk deltagare och PRofilspelare i FunctionEnum
+		                                               Kopierade attributen från MediaItems så de kan finnas på varje MediaItem
+		                                               Lade till @ForeignSystemId på MediaItem
+		                                               Lade till elementet CopyrightOwnerId i Copyright i MediaItem
+		                                               
+		                                               
+		                                               </redigerad>
+		<redigerad av="jl" datum="2013-08-26T10:00:00">Lade till InternalId där den inte fanns men det fanns ett id.
+			                                        </redigerad>
+		<redigerad av="jl" datum="2013-08-19T14:50:00">Deprecated Ratings
+		                                               Lade till Reviews</redigerad>
+		<redigerad av="jl" datum="2013-07-04T16:00:00">Lade till MediaItem.
+		                                               Markerade Image som deprecated.
+		                                               Använde BaseTextType där den fungerar.
+		                                               Lade enumlistorna internt i schemat.</redigerad>
+		<redigerad av="jl" datum="2013-04-23T15:45:00">Tog bort Övrig ur FunctionEnumList
+		                                               Flyttade ut Image utanför VersionableInfo
+		                                               Lade in ProgramFormat på alla tre nivåerna.                                               
+		                                               Lade in ProgramData på alla tre nivåerna.</redigerad>
+		
+		<redigerad av="jl" datum="2013-04-10T09:10:00">Ändrade MatchRank från nonNegativeInteger till bara Integer
+													   Lade till attributen MadeExportableNumberOfTimes och CreatedFromInputItemID i TVRProgram
+		                                               Lade till MatchRank på seriesseason och programseriers</redigerad>
+		
+		<redigerad av="jl" datum="2010-11-22T12:40:00">Flyttade ChannelAgeLimit till den plats där den ligger i exporterna.
+			                                           Ändrade datatypen på Year i repriser till string istället för gYear.
+			                                           Flyttade ChannelRegistryReferenceID inne i SeriesSeason
+			                                           Flyttade ChannelRegistryReferenceID inne i ProgramSeries
+			                                           Uppdaterade versionsnumret.</redigerad>
+		
+		<redigerad av="dry" datum="2010">Lade till Ratings med fritt antal Rating inuti. (Versionsnumret uppdaterades inte då.)</redigerad>
+		
+		<redigerad av="jl" datum="2007-10-30T12:40:00">	Gjorde ProgramPerson frivillig i PersonList så tomma PersonList inte ställer till problem.</redigerad>
+		<redigerad av="jl" datum="2007-10-10T14:40:00">	Lade till attribut för LastMadeExportableDate
+									Gjorde @Scope tvingande
+									Tog bort möjligheten till textinnehåll i xxDatetime i OtherBroadcastDateTime</redigerad>
+		<redigerad av="jl" datum="2007-08-14T19:40:00">	Lade till attribut för ChangedBy på flera nivåer via grundAttributGrupp
+									Lade till attribut för CreatedBy och CreatedDate på flera nivåer via grundAttributGrupp</redigerad>
+		<redigerad av="jl" datum="2007-08-16T10:40:00">	Lade till InitialRelatedTo och PendingRelatedTo
+									Tog bort CategoryEnumList.</redigerad>
+		<redigerad av="jl" datum="2007-08-14T19:40:00">	Tog bort Channel, Country, Language enumlists</redigerad>
+		<redigerad av="jl" datum="2007-06-13T07:40:00">	Ändrade sekunder till minuter
+		                                                Uppdaterade enumlists</redigerad>
+		<redigerad av="jl" datum="2007-05-23T21:40:00">	Gjorde ProgramSeries tvingade</redigerad>
+		
+		<redigerad av="jl" datum="2007-03-30T13:40:00">	Lade till element för ShowviewCode</redigerad>	
+		<redigerad av="jl" datum="2007-03-28T10:40:00">	Gjorde ett par id optional</redigerad>	
+		<redigerad av="jl" datum="2007-02-14T18:40:00">	Justering av ProgramFormatEnumList
+									Gjorde alla languagecode explicit frivilliga.
+									Lade till attribut för HoldingProgramsStartingxxx.
+									Gjorde attribut i TTSTVR frivilliga.
+									Gjorde Category@id optional.
+									Gjorde om referenser till Kanallistan till xsd:string
+									Gjorde VersionableInfo frivillig i SeriesSeason.
+									Gjorde om CountryCode till xsd:string.
+		</redigerad>	
+		<redigerad av="jl" datum="2006-12-05T15:40:00">	Gjorde om xs: till xsd:
+									  Gjorde ChannelRegistryReferenceID frivillig.
+										Gjorde TextDesc/@Part required.
+										Gjorde Category/@id required.
+										Gjorde Imagetitle frivillig.
+										Gjorde RelatedTo till integer.
+										Redigerat beskrivningar.
+										Lade till en FunctionEnumList.
+										Lade till ProgramFormat efter MediaType och baserat på en ProgramFormatEnumList.
+										
+		</redigerad>	
+		<redigerad av="jl" datum="2006-11-21T13:40:00">Förenklade xxxID till id
+			
+		</redigerad>	
+		<redigerad av="jl" datum="2006-11-20T15:20:00">Gjorde en grupp av ChannelAgeLimit som refereras därifrån den används.
+										Döpte om attribut till ChannelID där de verkligen är id på kanalen.
+										Lade till ChannelID på Title
+										Tog bort None från BroadcastTypeEnumList och gjorde attributet SectionBroadcast till frivilligt.
+										Gjorde om id:n som var xsd:string till xsd:nonnegativeinteger.
+										Category id flyttat till attribut och själva elementet kan innehålla fri text, bearbetningsbar eller beskrivning av kategorin.
+										Lade till ChannelItemID för kanalens eget id på denna sändning.
+										Bröt ut Title ur ProgramInformationType
+										Lade till ChannelRegistryReferenceId, repeterbar med kanalens id som attribut.
+										Tog bort UseFor i kanalens egen Title.
+										Byggde upp Version för att hålla alla element som tidigare hade UseFor
+										Skapat en VersionableInfo för att hålla x antal Version.
+										Tog bort ProgramInformationType eftersom det bara var Description kvar och lade in den direkt istället.
+										Gjorde TVRBroadcast i matchningsdelen frivillig.
+										Justerad en del beskrivningar.
+										Flyttade deklarationen av BroadcastInfo till det enda ställe den användes.
+										Gjorde om Scope - xsd:string till ScopeEnumList.
+										Kopplad AssignedBy till ChannelIdEnumList
+										Tog bort repeterbar på ProgramProduction.
+										Gjorde Direction frivillig.
+										Döpte om idReference till RegistryReferenceId
+										Städade upp själva strukturen i schemat utan att det påverkar xml-modellen.
+			
+		</redigerad>	
+		<redigerad av="jl" datum="2006-11-07T08:20:00">Tog bort EpisodeTitle från ProgramInformationType och lade den bara i avsnittsnivån.
+			                                                                       Lade till hållare för matchade program.
+			                                                                       Döpte om idReferens till idReference.
+			                                                                       Tog bort ChannelAgeLimit från ProgramSeries nivån.
+			                                                                       Tog bort InfoType från BroadcastInfo
+			                                                                       Lade till DubbedLanguageCode i AudioLanguage och gjorde elementinnehållet till attribut LanguageCode
+			                                                                       Tog bort attributet Match för det behövs inte. MatchRank är kvar.
+			
+			
+		</redigerad>	
+		<redigerad av="jl" datum="2006-10-31T14:20:00">Lade tablaattributgroup direkt på sin plats. Onödigt att definiera en grupp när den bara används en gång.
+			                                                                       Ändrade BroadcastInfoTypeEnumList till BroadcastEventTypeEnumList.
+			                                                                       Byggde ut OtherBroadCastDateTime med en massa attibut.
+			                                                                       Gjorde om BroadcastDateTime så den inte pekar på en type utan har konstruktionen direkt.
+			                                                                       Lade Category direkt där den används. Onödigt med referens när den bara används på ett ställe.
+			
+			
+		</redigerad>
+		<redigerad av="jl" datum="2006-10-27T13:00:00">Title flyttat till ProgramInformation
+			                                                                       EpisodeTitle flyttat till ProgramInformation
+			                                                                       Nytt element WebPage
+			                                                                       Nytt element SignLanguage
+			                                                                       Nytt element AdditionalMedia
+			                                                                       Nytt element SeriesEvent
+			                                                                       Nytt element BroadcastEvent
+			                                                                       Nytt element ChannelPrio
+			                                                                       Nytt element TTSprio
+			                                                                       Nytt element ChannelAgeLimit
+			                                                                       PersonList annorlunda utformad
+			                                                                       Förslag att ta bort strecken som InfoType i ExtraInfo
+			                                                                       Tog bort UseFor i TextDesc
+			                                                                       Lade till id i tablaAttributGrupp
+			                                                                       Tog bort grundattributgruppen från TVRProgramBroadcast
+			                                                                       Lade till grundattributgrupp på TVRProgram
+			                                                                       Gjorde om xsd:ID till xsd:string för att stödja samma serie och säsong i samma tablå.
+			                                                                       Lade till ett idReferens för att hålla koll på saker i programregistret som olika bitar refererar till.
+			                                                                       Lade till ChangedDate i tablaAttributGrupp.
+			
+		</redigerad>
+		<redigerad av="jl" datum="2006-10-23T10:00:00">Justerade TexttvInfoPage - lade till Type och LanguageCode.
+			                                                                       Justerade TexttvSubtitles - tog bort Page så att sidnumret läggs direkt i elementinnehåll.
+					                                                 Justerade Subtitles - flyttade informationen till attributet LanguageCode och lade till attributet Additional (true/false)
+			                                                                       Tog bort ProgramData och PersonList från ProgramSeries.
+			                                                                       Skapade BaseTextType och BlockTextType
+									     Gjorde om Into och AltDescription till BaseTextType
+			                                                                       Ersatte Short, Medium och Long av TextDesc repeterbar av BlockTextType
+			                                                                       Städade upp LanguageCode i beskrivningarna.
+			                                                                       Gjorde om ImageCaption till string
+			                                                                       Tog bort SmallPType eftersom den inte behövs mer.
+			                                                                       Flyttade tablaAttributGrupp till TTSTVR
+			                                                                       Tog bort SeriesEvent och ExtraInfo från Broadcast och ersatte med BroadcastInfo.
+			
+		
+		</redigerad>
+		<redigerad av="jl" datum="2006-10-13T10:00:00">Lade in ProgramData i SeriesSeason och ProgramSeries
+								   Tog bort LanguageCode från ProgramData
+								    Lade till PersonList och ExtraInfo på ProgramSeries så den blir helt parallell med SeriesSeason och Program
+								    Tog bort möjligheten att ha val mellan SeriesSeason och ProgramSeries i Program.
+								    Lade in kanallistan som id och som klartext. Men kanal-id kan inte vara xsd:id för då kan bara ett program per kanal finnas i samma fil.
+								    Lade på LanguageCode på bildtexten.
+			
+		</redigerad>	
+		<redigerad av="jl" datum="2006-10-12T10:00:00">Lade in TotalEpisodesInSeries
+								   Ändrade SectionBroadcast till en enumlist med tre värden (None, Block, Section).
+								   Tog bort ProgramType.
+								   Gjorde det möjligt att gå direkt från programavsnitt till programserie.
+								   Tog bort EstimatedDuration
+			
+		</redigerad>
+		<redigerad av="jl" datum="2006-10-11T13:20:00">Justering av beskrivningar.
+								    Tog bort IsInSeriesList
+								    Gjorde om Bild till Image, etc.
+								    Städade några default
+								    Tog bort det övergripande Language code på ProgramSeries
+								    Justerade datatypen i Start och EndDateTime så den även accepterar bara datum.
+			
+		</redigerad>
+		<redigerad av="jl" datum="2006-10-10T11:00:00">Justering av beskrivningar.
+								    Tog bort CategoryLink och ersatte med Category.
+								    Gjorde SeriesInformation till ProgramInformationType precis som ProgramInformation och SeasonInformation.
+			   					    Genomgång av olika titlar och deras betydelse.
+		</redigerad>
+	</xsd:documentation></xsd:annotation>
+	
+
+<!-- ! Rootstructure -->
+	<xsd:element name="TTSTVR">
+		<xsd:annotation><xsd:documentation>Root-element in TT TV-radio xml. Can contain one or more TVRProgramBroadcast which old the individual broadcasts.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="TVRProgramBroadcast"  maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID for this whole table</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="RelatedTo" type="xsd:integer" use="optional"><xsd:annotation><xsd:documentation>The latest update to this table was in realtion from this imported table.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="PendingRelatedTo" type="xsd:integer" use="optional"><xsd:annotation><xsd:documentation>ID of incoming table that this data is being updated against.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="InitialRelatedTo" type="xsd:integer" use="optional"><xsd:annotation><xsd:documentation>ID of the first imported table that this was built from. So the editor can back to the original.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional" ><xsd:annotation><xsd:documentation>Date and time when this table was created.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional" ><xsd:annotation><xsd:documentation>Date and time when this table was updated.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="ChangedBy" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Updated by.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="CreatedBy" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Created by.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="WorkStatus" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>Status of this table.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="HoldingProgramsStartingAtOrAfter" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Starttime for the so called table-day. Not the same as calendar-day.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="HoldingProgramsStartingBefore" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Endtime for the so called table-day. Not the same as calendar-day.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="LastMadeExportableDate" type="xsd:dateTime" use="optional" ><xsd:annotation><xsd:documentation>Date and time this table was ready for export.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal operations.</xsd:documentation></xsd:annotation></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Rootstructure -->
+
+	
+<!--   Structures for the main building blocks of programs -->
+	
+	<!--  TVRProgramBroadcast -->
+	<xsd:element name="TVRProgramBroadcast">
+	<xsd:complexType>
+		<xsd:annotation><xsd:documentation>This hold one program. It has one part for the broadcastinformation and one part for the more stable programinformation.</xsd:documentation></xsd:annotation>
+		<xsd:sequence>
+			<xsd:element ref="TVRBroadcast" minOccurs="1" maxOccurs="1"/>
+			<xsd:element ref="TVRProgram"  minOccurs="1" maxOccurs="1"/>
+			<xsd:element  name="ProgramMatches" minOccurs="0" maxOccurs="1">
+				<xsd:annotation><xsd:documentation>List of programs from the registry that match this program</xsd:documentation></xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="MatchedProgram" minOccurs="1" maxOccurs="unbounded">
+							<xsd:annotation><xsd:documentation>One program that matches this program.</xsd:documentation></xsd:annotation>
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element ref="TVRBroadcast" minOccurs="0" maxOccurs="1"/>
+									<xsd:element ref="TVRProgram"  minOccurs="1" maxOccurs="1"/>
+								</xsd:sequence>
+								<xsd:attribute name="ProgramIdReference" type="xsd:string"><xsd:annotation><xsd:documentation>Pointer to the program that matches.</xsd:documentation></xsd:annotation></xsd:attribute>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>	
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal operation</xsd:documentation></xsd:annotation></xsd:attribute>
+	</xsd:complexType>
+	</xsd:element>
+	<!-- TVRProgramBroadcast -->
+
+	
+<!--      Broadcast-part -->
+	
+	<!--  TVRBroadcast -->
+	<xsd:element name="TVRBroadcast">
+		<xsd:complexType>
+			<xsd:annotation><xsd:documentation>All information about the current broadcast of this program</xsd:documentation></xsd:annotation>
+			<xsd:sequence>
+				
+				<xsd:element ref="Channel"><xsd:annotation><xsd:documentation>Name and id of the channel where it is broadcasted.</xsd:documentation></xsd:annotation></xsd:element>
+				
+				<xsd:element name="BroadcastDateTime">
+					<xsd:complexType>
+						<xsd:annotation><xsd:documentation>Exact date and time for broadcast-.</xsd:documentation></xsd:annotation>
+						<xsd:sequence>
+							<xsd:element name="StartDateTime" minOccurs="1" maxOccurs="1"><xsd:annotation><xsd:documentation>Startdate and possibly starttime of this broadcast.</xsd:documentation></xsd:annotation>
+								<xsd:simpleType>
+									<xsd:union memberTypes="xsd:dateTime xsd:date"/>
+								</xsd:simpleType>	
+							</xsd:element>
+							<xsd:element name="EndDateTime" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>End date and possibly end time of this broadcast.</xsd:documentation></xsd:annotation>
+								<xsd:simpleType>
+									<xsd:union memberTypes="xsd:dateTime xsd:date"/>
+								</xsd:simpleType>	
+							</xsd:element>
+							<xsd:element name="BroadcastSlotLength" type="xsd:integer" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>The length of the broadcast in seconds.</xsd:documentation></xsd:annotation></xsd:element>
+							<xsd:element name="BroadcastDuration" type="xsd:integer" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>The net length in minutes of the content in the way it is broadcasted in this occasion.</xsd:documentation></xsd:annotation></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+					
+				<xsd:element ref="BroadcastInformation" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Information about this broadcast.</xsd:documentation></xsd:annotation></xsd:element>
+				
+				<xsd:element ref="OtherBroadcast"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Information about reruns that already took place or will take place in the future.</xsd:documentation></xsd:annotation></xsd:element>
+			
+				<xsd:element name="ShowviewCode" type="xsd:string" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Showviewcode for this broadcast in this channel.</xsd:documentation></xsd:annotation></xsd:element>
+			</xsd:sequence>
+
+			<xsd:attribute name="SectionBroadcast" type="BroadcastTypeEnumList" use="optional"><xsd:annotation><xsd:documentation>SectionBroadcast is normally None, or even missing. Otherwise it can be Block or Section.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID för internal operation.</xsd:documentation></xsd:annotation></xsd:attribute>
+			
+		</xsd:complexType>
+	</xsd:element>	
+	<!-- TVRBroadcast -->
+	
+
+	<!--  BroadcastInformation -->
+	<xsd:element name="BroadcastInformation">
+		<xsd:annotation><xsd:documentation>Information about this broadcast.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="TexttvInfoPage" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation>If there is information about this broadcast on text-tv. Pagenumber in element content.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Language code for the text-tv page. </xsd:documentation></xsd:annotation></xsd:attribute>
+								<xsd:attribute name="Type" type="xsd:string"><xsd:annotation><xsd:documentation>If the text-tv page is of a special kind. </xsd:documentation></xsd:annotation></xsd:attribute>
+							</xsd:extension>	
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				
+				<xsd:element name="WebPage" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation>Web-page about this broadcast</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attribute name="URL" type="xsd:string"><xsd:annotation><xsd:documentation>The URL to the web page. </xsd:documentation></xsd:annotation></xsd:attribute>
+							</xsd:extension>	
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="AudioLanguage"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Languages being used in the program in audio.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="Subtitles"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Language that can be read from subtitles.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="SignLanguage" minOccurs="0" maxOccurs="1">
+					<xsd:complexType>
+							<xsd:attribute name="Value" type="xsd:boolean" default="false"><xsd:annotation><xsd:documentation>Set to true if there is an option to see sign language.</xsd:documentation></xsd:annotation></xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element ref="TexttvSubtitles"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Language and page number if you can activate subtitles from text-tv.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="TechnicalProperty" type="TechnicalPropertyEnumList" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Technical information from a list of possible values.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="AdditionalMedia" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation>Om sändningen även sker på annat sätt än den normala</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attribute name="Type" type="AdditionalMediaTypeEnumList" ><xsd:annotation><xsd:documentation>What type of broadcast it is. </xsd:documentation></xsd:annotation></xsd:attribute>
+								<xsd:attribute name="URL" type="xsd:string"><xsd:annotation><xsd:documentation>URL if the broadcast can be received from the web. </xsd:documentation></xsd:annotation></xsd:attribute>
+							</xsd:extension>	
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="SeriesEvent" type="SeriesEventTypeEnumList" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>If it is an episode in a series with some special note, like season last.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="BroadcastEvent" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>If there is something special with this broadcast, like for example Premiere.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attribute name="Type" type="BroadcastEventTypeEnumList"></xsd:attribute>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ChannelPrio" type="xsd:string" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>If the channel has set a priority for this broadcast.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="TTSPrio" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>If TT has set a priority for this broadcast.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:attribute name="Value" type="xsd:nonNegativeInteger" use="required"><xsd:annotation><xsd:documentation>0 isfalse 1 is true.</xsd:documentation></xsd:annotation></xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="BroadcastInfo" type="xsd:string"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Extra information that has no other place.</xsd:documentation></xsd:annotation></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+	<!-- BroadcastInformation -->
+	
+	
+	<!--  OtherBroadcast -->
+	<xsd:element name="OtherBroadcast">
+		<xsd:annotation><xsd:documentation>Information about past or coming reruns of this program.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Direction" type="DirectionEnumList"  minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Tidigare mean it has been run previously, Kommande mean it will be rerun in the future.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="OtherBroadcastDateTime" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Date and time for the referenced rerun.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="StartDateTime" minOccurs="0" maxOccurs="1">
+								<xsd:annotation><xsd:documentation>Start datum och tid för en other broadcast.</xsd:documentation></xsd:annotation>
+								<xsd:complexType>
+									<xsd:attribute name="Year" type="xsd:string"><xsd:annotation><xsd:documentation>Year, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Month" type="xsd:string"><xsd:annotation><xsd:documentation>Month, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Day" type="xsd:string"><xsd:annotation><xsd:documentation>Day, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Hour" type="xsd:string"><xsd:annotation><xsd:documentation>Hour, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Minute" type="xsd:string"><xsd:annotation><xsd:documentation>Minut, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Second" type="xsd:string"><xsd:annotation><xsd:documentation>Second, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Timezone" type="xsd:string"><xsd:annotation><xsd:documentation>Time difference. If empty UTC.</xsd:documentation></xsd:annotation></xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="EndDateTime" minOccurs="0" maxOccurs="1">
+								<xsd:annotation><xsd:documentation>Slut datum och tid för en other broadcast.</xsd:documentation></xsd:annotation>
+								<xsd:complexType>
+									<xsd:attribute name="Year" type="xsd:string"><xsd:annotation><xsd:documentation>Year, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Month" type="xsd:string"><xsd:annotation><xsd:documentation>Month, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Day" type="xsd:string"><xsd:annotation><xsd:documentation>Day, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Hour" type="xsd:string"><xsd:annotation><xsd:documentation>Hour, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Minute" type="xsd:string"><xsd:annotation><xsd:documentation>Minut, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Second" type="xsd:string"><xsd:annotation><xsd:documentation>Second, if known</xsd:documentation></xsd:annotation></xsd:attribute>
+									<xsd:attribute name="Timezone" type="xsd:string"><xsd:annotation><xsd:documentation>Time difference. If empty UTC.</xsd:documentation></xsd:annotation></xsd:attribute>
+								</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="OtherBroadcastDescription" type="xsd:string" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Simple textual information about this rerun. Sometimes this is the only information.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="Channel" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Channel of other broadcast. If missing it is the same channel as this broadcast-</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="AudioLanguage"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Language heard in the other broadcast.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="Subtitles"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Language used on subtitles in other broadcast.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="TexttvSubtitles" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Pages on text-tv subtitles for other broadcast.</xsd:documentation></xsd:annotation></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>		
+	<!-- OtherBroadcast -->
+	
+
+	
+<!--       Programinformation -struktur -->
+	
+	<!--  TVRProgram -->
+	<xsd:element name="TVRProgram">
+		<xsd:annotation><xsd:documentation>Information about a program. Information that is valid regardless of broadcasting occasion.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				
+				<xsd:element name="MediaType" type="MediaTypeEnumList"><xsd:annotation><xsd:documentation>If the program is radio or tv.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="ProgramFormat" type="ProgramFormatEnumList" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Type of program</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="ChannelItemID" type="xsd:string" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Channel specific id for the program information.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ChannelRegistryReferenceID"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Channel registry id for this program.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="OriginalProgramTitle" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Title of program in original language.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="EpisodeNumber" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Episode number and which channel has set it.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:positiveInteger">
+								<xsd:attribute name="Scope" type="ScopeEnumList" use="required"><xsd:annotation><xsd:documentation>In what timeframe the numbering is, per season or totally.</xsd:documentation></xsd:annotation></xsd:attribute>
+								<xsd:attribute name="AssignedBy" type="xsd:string"><xsd:annotation><xsd:documentation>Who has set this episode number.</xsd:documentation></xsd:annotation></xsd:attribute>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>				
+				<xsd:element ref="Title"  minOccurs="1" maxOccurs="unbounded"></xsd:element>
+				<xsd:element ref="ChannelAgeLimit" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Information about age restrictions. Connected with specific channels.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="VersionableInfo" minOccurs="1" maxOccurs="1">
+					<xsd:annotation><xsd:documentation>Versions of textual information about the program.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="Version" minOccurs="1" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>One version of textual information.</xsd:documentation></xsd:annotation></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<!--<xsd:element name="Image" type="ImageType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>DEPRECATED till förmån för MediaItem</xsd:documentation></xsd:annotation></xsd:element>-->
+				<xsd:element ref="MediaItems" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>MediaItems can be any media objects but normally images.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="Description" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Text descriptions</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="PersonList" type="PersonListType" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>List of persons involved in the program. </xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ExtraInfo" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Extra information that has no other place.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ProgramData" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Data about the program.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="SeriesSeason" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Information about the season of a series.</xsd:documentation></xsd:annotation> </xsd:element>
+
+				<xsd:element ref="Reviews" minOccurs="0" maxOccurs="1"></xsd:element>
+    
+			</xsd:sequence>
+			
+			<xsd:attributeGroup ref="grundAttributGrupp"/>
+			<xsd:attribute name="MatchRank" type="xsd:integer"><xsd:annotation><xsd:documentation>Ranking value in this match.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="MadeExportableNumberOfTimes" type="xsd:integer"><xsd:annotation><xsd:documentation>Number of times this program has been made exportable</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="CreatedFromInputItemID" type="xsd:integer"><xsd:annotation><xsd:documentation>What input this program was created from</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="ExportableVersionId" type="xsd:integer" use="optional"><xsd:annotation><xsd:documentation>ID for the exportable version. To make sure the program has the same id even if exported several times.</xsd:documentation></xsd:annotation></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>	
+	<!-- TVRProgram -->
+	
+<!-- Season information -->	
+		
+	<!--  SeriesSeason -->
+	<xsd:element name="SeriesSeason">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ProgramFormat" type="ProgramFormatEnumList" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>If the program is radio or tv.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="SeasonYear" type="xsd:string" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Year, or years, this season is from.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="SeasonLabel" type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>Information about the season.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="OriginalSeasonTitle" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Original title of the season.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ChannelRegistryReferenceID"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+				<xsd:element name="TotalEpisodesInSeason" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation>Number of episodes in this series this season. Can be different in different channels.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:nonNegativeInteger">
+								<xsd:attribute name="AssignedBy" type="xsd:string"></xsd:attribute>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+					
+				</xsd:element>
+				<xsd:element ref="Title"  minOccurs="1" maxOccurs="unbounded"></xsd:element>
+				<xsd:element ref="ChannelAgeLimit" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Age limit information.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="VersionableInfo" minOccurs="0" maxOccurs="1">
+					<xsd:annotation><xsd:documentation>Versions of textual information about this season.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="Version" minOccurs="1" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>One version of textual information about this season.</xsd:documentation></xsd:annotation></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+<!--				<xsd:element name="Image" type="ImageType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>DEPRECATED till förmån för MediaItem</xsd:documentation></xsd:annotation></xsd:element>-->
+				<xsd:element ref="MediaItems" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Media objects connected with this season.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="Description" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Text descriptions of this season.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="PersonList" type="PersonListType" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Persons and their functions for this season.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ExtraInfo" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Extra information about the season.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ProgramData" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Data that is valid for all episodes of this season.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ProgramSeries" minOccurs="1" maxOccurs="1"><xsd:annotation><xsd:documentation>Information about the serie that this season is part of.</xsd:documentation></xsd:annotation></xsd:element>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="grundAttributGrupp"/>
+			<xsd:attribute name="MatchRank" type="xsd:integer"><xsd:annotation><xsd:documentation>Ranking in the registry matching</xsd:documentation></xsd:annotation></xsd:attribute>
+			
+		</xsd:complexType>
+	</xsd:element>
+	<!-- SeriesSeason -->
+	
+<!--  Basic information about a serie -->	
+	
+	<!--  ProgramSeries -->
+	<xsd:element name="ProgramSeries">
+		<xsd:annotation><xsd:documentation>Information about a serie that is valid for all seasons and all episodes.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="ProgramFormat" type="ProgramFormatEnumList" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>If it is radio or tv.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="OriginalSeriesTitle" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Original title of the series.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ChannelRegistryReferenceID"  minOccurs="0" maxOccurs="unbounded"></xsd:element>
+				<xsd:element name="TotalEpisodesInSeries" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation>Total number of episodes in this serie.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:nonNegativeInteger">
+								<xsd:attribute name="AssignedBy" type="xsd:string"></xsd:attribute>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+					
+				</xsd:element>
+				<xsd:element ref="Title"  minOccurs="1" maxOccurs="unbounded"></xsd:element>
+				<xsd:element ref="ChannelAgeLimit" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Age limit information about this serie.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="VersionableInfo" minOccurs="0" maxOccurs="1">
+					<xsd:annotation><xsd:documentation>Versions of textual information about this serie.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="Version" minOccurs="1" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>One version of textual information about this serie.</xsd:documentation></xsd:annotation></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+<!--				<xsd:element name="Image" type="ImageType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>DEPRECATED till förmån för MediaItem</xsd:documentation></xsd:annotation></xsd:element>-->
+				<xsd:element ref="MediaItems" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Holder of media objects referenced from this serie.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="Description" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Textual information about this serie, valid for all seasons and episodes.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ExtraInfo" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Extra information.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element ref="ProgramData" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Data about the serie.</xsd:documentation></xsd:annotation></xsd:element>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="grundAttributGrupp"/>
+			<xsd:attribute name="MatchRank" type="xsd:integer"><xsd:annotation><xsd:documentation>Ranking for this serie in the registry matching</xsd:documentation></xsd:annotation></xsd:attribute>
+			
+		</xsd:complexType>
+	</xsd:element>	
+	<!-- ProgramSeries -->
+
+		
+<!-- Declarations of separate elements -->	
+
+	<!-- Audio Language -->
+	<xsd:element name="AudioLanguage">
+		<xsd:annotation><xsd:documentation>Language in the main audio heard in the program.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Code of the language heard</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="DubbedLanguageCode" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>If the program is dubbed, language code of the language it is dubbed in.</xsd:documentation></xsd:annotation></xsd:attribute>
+			
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!--  Channel-->
+	<xsd:element name="Channel">
+		<xsd:annotation><xsd:documentation>Channel name</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+				     <xsd:attribute name="id" type="xsd:string" use="optional"></xsd:attribute>	
+					<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal operations</xsd:documentation></xsd:annotation></xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>	
+
+	<!-- ChannelAgeLimit -->
+	<xsd:element name="ChannelAgeLimit">
+		<xsd:annotation>
+			<xsd:documentation>Information about age limits connedted with the channel.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="ChannelID" type="xsd:string" use="optional"></xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- ChannelRegistryReferenceID -->
+	<xsd:element name="ChannelRegistryReferenceID"><xsd:annotation><xsd:documentation>Channel specific id of program.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="ChannelID" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID of the channel assigning this id.</xsd:documentation></xsd:annotation></xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- ! Description -->
+	<xsd:element name="Description">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="TextDesc"  minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Textual description</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"></xsd:attribute>
+								<xsd:attribute name="Part" type="xsd:string" use="required"><xsd:annotation><xsd:documentation>Can be one of three text parts</xsd:documentation></xsd:annotation></xsd:attribute>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="Misc" minOccurs="0" >
+					<xsd:annotation><xsd:documentation>Unused text and internal notes.</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Text" type="xsd:string" minOccurs="1" maxOccurs="unbounded"></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+	<!-- Description -->
+	
+	<!-- ! ExtraInfo -->
+	<xsd:element name="ExtraInfo">
+		<xsd:annotation><xsd:documentation>Extra informationthat has no other place.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="InfoType" type="InfoTypeEnumList"></xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>			
+	</xsd:element>		
+	<!-- ExtraInfo -->
+	
+	<!-- ! Program Data-->
+	<xsd:element name="ProgramData">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Category" minOccurs="0" maxOccurs="unbounded">
+					<xsd:annotation><xsd:documentation>Content category of program</xsd:documentation></xsd:annotation>
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attribute name="id" type="xsd:string" use="optional"></xsd:attribute>
+								<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal operation</xsd:documentation></xsd:annotation></xsd:attribute>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="ProgramProduction" minOccurs="0" maxOccurs="1"><xsd:annotation><xsd:documentation>Information about the production of the program.</xsd:documentation></xsd:annotation> 
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Year" type="xsd:string" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Year or years when the program was produced.</xsd:documentation></xsd:annotation></xsd:element>
+							<xsd:element name="ProductionCompany" type="xsd:string" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Company/ies involved in the production.</xsd:documentation></xsd:annotation></xsd:element>
+							<xsd:element name="CountryCode" type="xsd:string" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Country code(s) of the production.</xsd:documentation></xsd:annotation></xsd:element>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+	<!-- Program Data -->
+	
+	
+	<xsd:element name="Reviews">
+		<xsd:annotation>
+			<xsd:documentation>Review and/or ratings of the program.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="Review" maxOccurs="unbounded">
+					<xsd:annotation>
+						<xsd:documentation>One review or rating.</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Originator" minOccurs="0">
+                               				<xsd:complexType>
+                               					<xsd:sequence>
+                               						<xsd:element name="Name" minOccurs="0" type="xsd:string"></xsd:element>
+                               						<xsd:element name="OrganisationName" type="xsd:string" minOccurs="0"></xsd:element>
+                               					</xsd:sequence>
+                               					<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
+                               					<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
+                              				</xsd:complexType>								
+							</xsd:element>
+							<xsd:element name="RatingValue" minOccurs="0" type="xsd:string"/>
+							<xsd:element name="ReviewTextShortHeadline" type="BaseTextType" minOccurs="0"/>
+							<xsd:element name="ReviewTextLongHeadline" type="BaseTextType" minOccurs="0"/>
+							<xsd:element name="ReviewTextShort" type="BaseTextType" minOccurs="0"/>
+							<xsd:element name="ReviewTextLong" type="BaseTextType" minOccurs="0"/>
+						</xsd:sequence>
+<!--						<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>DEPRECATED: Datum och klockslag då denna MediaItem skapades</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>DEPRECATED: Datum och klockslag då denna MediaItem senast ändrades.</xsd:documentation></xsd:annotation></xsd:attribute>
+-->						<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
+					</xsd:complexType>
+					
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>	
+	
+<!--  <!-\- ! Ratings -\->
+  <xsd:element name="Ratings">
+    <xsd:annotation>
+      <xsd:documentation>DEPRECATED Hållare för betyg och omdömen.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Rating" minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation>Betyg och omdöme.</xsd:documentation>
+          </xsd:annotation>
+          <xsd:complexType>
+            <xsd:simpleContent>
+              <xsd:extension base="xsd:string">
+            <xsd:attribute name="OriginatorID" type="xsd:string" use="optional">
+              <xsd:annotation>
+                <xsd:documentation>ID på betygsättare. </xsd:documentation>
+              </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="OriginatorName" type="xsd:string" use="optional">
+              <xsd:annotation>
+                <xsd:documentation>Namn på betygsättare.  </xsd:documentation>
+              </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="OrganisationName" type="xsd:string" use="optional">
+              <xsd:annotation>
+                <xsd:documentation>Namn på betygsättares organisation.  </xsd:documentation>
+              </xsd:annotation>
+            </xsd:attribute>
+            <xsd:attribute name="ReviewText" type="xsd:string" use="optional">
+              <xsd:annotation>
+                <xsd:documentation>Recension.  </xsd:documentation>
+              </xsd:annotation>
+            </xsd:attribute>
+              </xsd:extension>
+            </xsd:simpleContent>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <!-\- Ratings -\->
+-->	
+
+	<xsd:element name="MediaItems">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="MediaItem">
+					<xsd:annotation>
+						<xsd:documentation>Element to handle one MediaItem</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Copyright" minOccurs="0" maxOccurs="1">
+								<xsd:annotation><xsd:documentation>Copyright information for this media item.</xsd:documentation></xsd:annotation>
+								<xsd:complexType>
+									<xsd:sequence>
+										<xsd:element name="CopyrightText" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Text explaining copyright information for this media item.</xsd:documentation></xsd:annotation></xsd:element>
+										<xsd:element name="CopyrightOwner" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Holder of the copyright.</xsd:documentation></xsd:annotation></xsd:element>
+										<xsd:element name="CopyrightOwnerName" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Name of the holder of this copyright.</xsd:documentation></xsd:annotation></xsd:element>
+										<xsd:element name="CopyrightOwnerId" type="xsd:string" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Id of the holder of this copyright.</xsd:documentation></xsd:annotation></xsd:element>
+									</xsd:sequence>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="DescriptiveMetadata" minOccurs="1" maxOccurs="1">
+								<xsd:annotation><xsd:documentation>Själva informationen om detta MediaItem, filnamn osv.</xsd:documentation></xsd:annotation>
+			   					<xsd:complexType>
+			       					<xsd:sequence>
+			       						<xsd:element name="Title" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Title of this media item.</xsd:documentation></xsd:annotation></xsd:element>
+			       						<xsd:element name="Caption" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Description of this media item. Can be caption.</xsd:documentation></xsd:annotation></xsd:element>
+			       						<xsd:element name="Creator" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Name of the creator of this media item.</xsd:documentation></xsd:annotation></xsd:element>
+			       						<xsd:element name="Filename" type="xsd:string" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Filname suggested for this media item.</xsd:documentation></xsd:annotation></xsd:element>
+			       						<xsd:element name="PublicURL" type="xsd:string" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Full URL to this media item.</xsd:documentation></xsd:annotation></xsd:element>
+			       					</xsd:sequence>
+			    				</xsd:complexType>		
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was created</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was updated.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="IsAutoCreated" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Internal note if it has been autocreated.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="Role" type="MediaItemRoleEnumList" use="optional"><xsd:annotation><xsd:documentation>Role this media item has.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="Bytesize" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Size of the media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="MimeType" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Mimetype for this MediaItem</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="MediaType" type="MediaItemTypeEnumList" use="optional"><xsd:annotation><xsd:documentation>Type of media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="ForeignSystemId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID from the supplier of this media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+					</xsd:complexType>
+				</xsd:element>
+				
+			</xsd:sequence>
+			<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was created</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was updated.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="IsAutoCreated" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Internal note if it has been autocreated.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="Role" type="MediaItemRoleEnumList" use="optional"><xsd:annotation><xsd:documentation>Role this media item has.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="Bytesize" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Size of the media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="MimeType" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Mimetype for this MediaItem</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="MediaType" type="MediaItemTypeEnumList" use="optional"><xsd:annotation><xsd:documentation>Type of media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="ForeignSystemId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID from the supplier of this media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+		</xsd:complexType>
+		
+	</xsd:element>
+	
+	<!-- ! Sub_titles -->
+	<xsd:element name="Subtitles">
+		<xsd:annotation><xsd:documentation>Language on the subtitles of the program.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Language code for the subtitles. </xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="Additional" type="xsd:boolean"><xsd:annotation><xsd:documentation></xsd:documentation></xsd:annotation></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Sub_titles -->
+	
+	<!-- ! Texttv_Subtitles -->
+	<xsd:element name="TexttvSubtitles" type="BaseTextType"><xsd:annotation><xsd:documentation>If subtitles can be activated through text-tv.</xsd:documentation></xsd:annotation></xsd:element>
+	<!-- Texttv_Subtitles -->
+	
+	<!-- Title -->
+	<xsd:element name="Title"><xsd:annotation><xsd:documentation>The title for the program set by the channel.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:simpleContent>
+				<xsd:extension base="xsd:string">
+					<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Language code for the title.</xsd:documentation></xsd:annotation></xsd:attribute>
+					<xsd:attribute name="ChannelID" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID of the channel that sat this title.</xsd:documentation></xsd:annotation></xsd:attribute>
+				</xsd:extension>
+			</xsd:simpleContent>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!-- Version av innehåll som kan vara olika för olika kunder -->
+	<xsd:element name="Version">
+		<xsd:annotation><xsd:documentation>One version of textual information about a program, a season or a serie.</xsd:documentation></xsd:annotation>
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="EpisodeTitle"  type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Specific title of an episode of a series.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="TTSTitle" type="BaseTextType"><xsd:annotation><xsd:documentation>TT title of program.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="Intro" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Short textline, like "Swedish documentary from 2015"</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="AltDescription" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Alternativ textual description.</xsd:documentation></xsd:annotation></xsd:element>
+				<xsd:element name="Puff" type="BaseTextType" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Text part used for sporting events</xsd:documentation></xsd:annotation></xsd:element>
+			</xsd:sequence>
+			<xsd:attribute  name="id" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID for this version of textual information.</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
+		</xsd:complexType>
+	</xsd:element>
+	
+	
+<!-- Types -->
+
+		<xsd:complexType name="ImageType">
+			<xsd:sequence>
+				<xsd:element name="ImageFilename" type="xsd:string" minOccurs="1" maxOccurs="1">
+					<xsd:annotation><xsd:documentation>Name of image file</xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element name="ImageTitle" type="xsd:string" minOccurs="0" maxOccurs="1">
+					<xsd:annotation><xsd:documentation>Title of image</xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element name="ImageCreator" type="xsd:string" minOccurs="0" maxOccurs="1">
+					<xsd:annotation><xsd:documentation>Name of the creator</xsd:documentation></xsd:annotation>
+				</xsd:element>
+				<xsd:element name="ImageCaption" type="BaseTextType" minOccurs="0" maxOccurs="1">
+					<xsd:annotation><xsd:documentation>Image description, max 150 char.</xsd:documentation></xsd:annotation>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	
+
+	<!-- ! PersonListType -->
+	<xsd:complexType name="PersonListType">
+		<xsd:sequence>
+			<xsd:element name="ProgramPerson" minOccurs="0" maxOccurs="unbounded"><xsd:annotation><xsd:documentation>Persons involved in this program.</xsd:documentation></xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Function" minOccurs="0" maxOccurs="1">
+							<xsd:annotation><xsd:documentation>Function this program has in connection with this program.</xsd:documentation></xsd:annotation>
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="FunctionEnumList">
+										<xsd:attribute name="Rank" type="xsd:nonNegativeInteger" use="optional"/><!-- DEPRECATED. The order in the xml is significant instead -->
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Name" type="xsd:string"><xsd:annotation><xsd:documentation>Name of the person.</xsd:documentation></xsd:annotation></xsd:element>
+						<xsd:element name="Role" type="xsd:string" minOccurs="0"><xsd:annotation><xsd:documentation>If function is "Skådespelare", which means actor, this can hold the name of the character the actor play.</xsd:documentation></xsd:annotation></xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="RegistryReferenceId" type="xsd:string" use="optional"/>
+				</xsd:complexType>
+			</xsd:element>	
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- PersonListType -->
+	
+	<!-- Base_TExtType -->
+	<xsd:annotation><xsd:documentation>Basic text part.</xsd:documentation></xsd:annotation>
+	<xsd:complexType name="BaseTextType">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attribute name="LanguageCode" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Language code for the text.</xsd:documentation></xsd:annotation></xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- Base_TExtType -->
+	
+	
+<!-- Attribut-deklarationer och Attribut-grupper -->	
+
+	<xsd:attributeGroup name="grundAttributGrupp">
+		<xsd:annotation><xsd:documentation>Attributes being used in several places.</xsd:documentation></xsd:annotation>
+		<xsd:attribute  name="id" type="xsd:nonNegativeInteger" use="optional"/>
+		<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional" ><xsd:annotation><xsd:documentation>Date and time of creation</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional" ><xsd:annotation><xsd:documentation>Date and time of update</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="OrgChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Used by the web service to minimize calls to the database.</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="AccessStatus" type="xsd:nonNegativeInteger"  use="optional" ><xsd:annotation><xsd:documentation>Status of availability</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="RegistryReferenceId" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>Releationship to any program, season or serie in the registry.</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="ChangedBy" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Updated by.</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="CreatedBy" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Created by.</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling.</xsd:documentation></xsd:annotation></xsd:attribute>
+	</xsd:attributeGroup>
+	
+	
+	<!-- ENUM-listor -->
+
+	<xsd:simpleType name="AdditionalMediaTypeEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Webb-tv"/>
+			<xsd:enumeration value="Podsändning"/>
+			<xsd:enumeration value="Webbradio"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- BroadcastEvent -->
+	
+	<xsd:simpleType name="BroadcastEventTypeEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Direkt"/>
+			<xsd:enumeration value="Samsändning"/>
+			<xsd:enumeration value="Eftersändning"/>
+			<xsd:enumeration value="Premiär"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="BroadcastTypeEnumList">
+		<xsd:restriction base="xsd:string">
+			<!--			<xs:enumeration value="None"><xs:annotation><xs:documentation>Inget speciellt med detta program</xs:documentation></xs:annotation></xs:enumeration>-->
+			<xsd:enumeration value="Block"><xsd:annotation><xsd:documentation>This program is a group that contain other programs.</xsd:documentation></xsd:annotation></xsd:enumeration>
+			<xsd:enumeration value="Section"><xsd:annotation><xsd:documentation>This program is part of a group of programs.</xsd:documentation></xsd:annotation></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="DirectionEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Tidigare"/>
+			<xsd:enumeration value="Kommande"/>
+			<xsd:enumeration value="Relaterade"/>
+			<xsd:enumeration value=""></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="FunctionEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Artist"/>
+			<xsd:enumeration value="Berättare"/>
+			<xsd:enumeration value="Domare"/>
+			<xsd:enumeration value="Expert"/>
+			<xsd:enumeration value="Expertkommentator"/>
+			<xsd:enumeration value="Fetmarkerad"><xsd:annotation><xsd:documentation>Only used internally.</xsd:documentation></xsd:annotation></xsd:enumeration>
+			<xsd:enumeration value="Författare"/>
+			<xsd:enumeration value="Gäst"/>
+			<xsd:enumeration value="Gästskådespelare"/>
+			<xsd:enumeration value="Kommentator"/>
+			<xsd:enumeration value="Manus"/>
+			<xsd:enumeration value="Medverkande" />
+			<xsd:enumeration value="Producent"/>
+			<xsd:enumeration value="Profilspelare"/>
+			<xsd:enumeration value="Programledare"/>
+			<xsd:enumeration value="Redaktör"/>
+			<xsd:enumeration value="Regerande mästare"/>
+			<xsd:enumeration value="Regissör"/>
+			<xsd:enumeration value="Reporter"/>
+			<xsd:enumeration value="Röst"/>
+			<xsd:enumeration value="Skådespelare"/>
+			<xsd:enumeration value="Svensk deltagare"/>
+			<xsd:enumeration value="Tävlande"/>
+			<xsd:enumeration value="Uppläsare"/>
+			<!--            <xs:enumeration value="Övrig"/>-->
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="InfoTypeEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Info"/>
+			<xsd:enumeration value="Hemmalag"/>
+			<xsd:enumeration value="Bortalag"/>
+			<xsd:enumeration value="Tävling"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="MediaItemRoleEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Primary"/>
+			<xsd:enumeration value="Auxillary"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="MediaItemTypeEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Image"/>
+			<xsd:enumeration value="Video"/>
+			<xsd:enumeration value="Audio"/>
+			<xsd:enumeration value="Binary"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="MediaTypeEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="TV"/>
+			<xsd:enumeration value="Radio"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ProgramFormatEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Aktuellt"/>
+			<xsd:enumeration value="Dokumentär"/>
+			<xsd:enumeration value="Feature"/>
+			<xsd:enumeration value="Film"/>
+			<xsd:enumeration value="Nyheter"/>
+			<xsd:enumeration value="Tv-serie"/>
+			<xsd:enumeration value="Underhållning"/>
+			<xsd:enumeration value="Utbildning"/>
+			<xsd:enumeration value="Sportevenemang"/>
+			<xsd:enumeration value="Övrigt"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="ScopeEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Säsongen"/>
+			<xsd:enumeration value="Hela serien"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="SeriesEventTypeEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Programstart"/>
+			<xsd:enumeration value="Seriestart"/>
+			<xsd:enumeration value="Säsongstart"/>
+			<xsd:enumeration value="Reprisstart"/>
+			<xsd:enumeration value="Säsongsavslutning"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!-- TechnicalProperty  -->
+	<xsd:simpleType name="TechnicalPropertyEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Bredbild"/>
+			<xsd:enumeration value="Letterbox"/>
+			<xsd:enumeration value="Multikanalsljud"/>
+			<xsd:enumeration value="Dolby"/>
+			<xsd:enumeration value="sv/v"/>
+			<xsd:enumeration value="Stereo"/>
+			<xsd:enumeration value="HD"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- TechnicalProperty  -->
+	
+	
+
+</xsd:schema>
