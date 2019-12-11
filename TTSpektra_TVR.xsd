@@ -6,6 +6,7 @@
 
 	<xsd:annotation><xsd:documentation>
 		<Version>2014:25:b</Version>
+    <redigerad av="gvl" datum="2019-12-17T08:00:00">Changed type for "ID" and "RegistryReferenceId" to string</redigerad>
 		<redigerad av="jl" datum="2014-06-17T08:00:00">Lade till headlines i reviews.
 		                                               Lade till RegistryReferenceID på personer 
 		                                               Gjorde Filename frivilligt.
@@ -201,7 +202,7 @@
 			<xsd:sequence>
 				<xsd:element ref="TVRProgramBroadcast"  maxOccurs="unbounded"/>
 			</xsd:sequence>
-			<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID for this whole table</xsd:documentation></xsd:annotation></xsd:attribute>
+			<xsd:attribute name="id" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID for this whole table</xsd:documentation></xsd:annotation></xsd:attribute>
 			<xsd:attribute name="RelatedTo" type="xsd:integer" use="optional"><xsd:annotation><xsd:documentation>The latest update to this table was in realtion from this imported table.</xsd:documentation></xsd:annotation></xsd:attribute>
 			<xsd:attribute name="PendingRelatedTo" type="xsd:integer" use="optional"><xsd:annotation><xsd:documentation>ID of incoming table that this data is being updated against.</xsd:documentation></xsd:annotation></xsd:attribute>
 			<xsd:attribute name="InitialRelatedTo" type="xsd:integer" use="optional"><xsd:annotation><xsd:documentation>ID of the first imported table that this was built from. So the editor can back to the original.</xsd:documentation></xsd:annotation></xsd:attribute>
@@ -711,7 +712,7 @@
 						</xsd:sequence>
 <!--						<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>DEPRECATED: Datum och klockslag då denna MediaItem skapades</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>DEPRECATED: Datum och klockslag då denna MediaItem senast ändrades.</xsd:documentation></xsd:annotation></xsd:attribute>
--->						<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
+-->						<xsd:attribute name="id" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
 					</xsd:complexType>
 					
@@ -930,12 +931,12 @@
 
 	<xsd:attributeGroup name="grundAttributGrupp">
 		<xsd:annotation><xsd:documentation>Attributes being used in several places.</xsd:documentation></xsd:annotation>
-		<xsd:attribute  name="id" type="xsd:nonNegativeInteger" use="optional"/>
+		<xsd:attribute  name="id" type="xsd:string" use="optional"/>
 		<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional" ><xsd:annotation><xsd:documentation>Date and time of creation</xsd:documentation></xsd:annotation></xsd:attribute>
 		<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional" ><xsd:annotation><xsd:documentation>Date and time of update</xsd:documentation></xsd:annotation></xsd:attribute>
 		<xsd:attribute name="OrgChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Used by the web service to minimize calls to the database.</xsd:documentation></xsd:annotation></xsd:attribute>
 		<xsd:attribute name="AccessStatus" type="xsd:nonNegativeInteger"  use="optional" ><xsd:annotation><xsd:documentation>Status of availability</xsd:documentation></xsd:annotation></xsd:attribute>
-		<xsd:attribute name="RegistryReferenceId" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>Releationship to any program, season or serie in the registry.</xsd:documentation></xsd:annotation></xsd:attribute>
+		<xsd:attribute name="RegistryReferenceId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Releationship to any program, season or serie in the registry.</xsd:documentation></xsd:annotation></xsd:attribute>
 		<xsd:attribute name="ChangedBy" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Updated by.</xsd:documentation></xsd:annotation></xsd:attribute>
 		<xsd:attribute name="CreatedBy" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Created by.</xsd:documentation></xsd:annotation></xsd:attribute>
 		<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling.</xsd:documentation></xsd:annotation></xsd:attribute>
