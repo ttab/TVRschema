@@ -6,6 +6,7 @@
 
 	<xsd:annotation><xsd:documentation>
 		<Version>2014:25:b</Version>
+    <redigerad av="gvl" datum="2019-12-17T08:00:00">Changed type for "ID" and "RegistryReferenceId" to string</redigerad>
 		<redigerad av="jl" datum="2014-06-17T08:00:00">Lade till headlines i reviews.
 		                                               Lade till RegistryReferenceID på personer 
 		                                               Gjorde Filename frivilligt.
