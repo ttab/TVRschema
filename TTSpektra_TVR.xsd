@@ -6,6 +6,7 @@
 
 	<xsd:annotation><xsd:documentation>
 		<Version>2014:25:b</Version>
+    <redigerad av="gvl" datum="2020-05-07T09:00:00">Updated MediaItems to new version with MediaItem as unbounded</redigerad>
     <redigerad av="gvl" datum="2019-12-17T08:00:00">Changed type for "ID" and "RegistryReferenceId" to string</redigerad>
 		<redigerad av="jl" datum="2014-06-17T08:00:00">Lade till headlines i reviews.
 		                                               Lade till RegistryReferenceID på personer 
@@ -768,7 +769,7 @@
 	<xsd:element name="MediaItems">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="MediaItem">
+				<xsd:element name="MediaItem" minOccurs="0" maxOccurs="unbounded">
 					<xsd:annotation>
 						<xsd:documentation>Element to handle one MediaItem</xsd:documentation>
 					</xsd:annotation>
@@ -801,10 +802,13 @@
 						<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was created</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was updated.</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="IsAutoCreated" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Internal note if it has been autocreated.</xsd:documentation></xsd:annotation></xsd:attribute>
-						<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
-						<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="id" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="Orientation" type="MediaItemOrientationEnumList" use="optional"><xsd:annotation><xsd:documentation>Orientation for this image.</xsd:documentation></xsd:annotation></xsd:attribute>
+            <xsd:attribute name="Width" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>Width in pixels for this image</xsd:documentation></xsd:annotation></xsd:attribute>
+            <xsd:attribute name="Height" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>Height in pixels for this image</xsd:documentation></xsd:annotation></xsd:attribute>
+            <xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="Role" type="MediaItemRoleEnumList" use="optional"><xsd:annotation><xsd:documentation>Role this media item has.</xsd:documentation></xsd:annotation></xsd:attribute>
-						<xsd:attribute name="Bytesize" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Size of the media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="Size" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Size of the media item.</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="MimeType" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Mimetype for this MediaItem</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="MediaType" type="MediaItemTypeEnumList" use="optional"><xsd:annotation><xsd:documentation>Type of media item.</xsd:documentation></xsd:annotation></xsd:attribute>
 						<xsd:attribute name="ForeignSystemId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID from the supplier of this media item.</xsd:documentation></xsd:annotation></xsd:attribute>
@@ -813,15 +817,18 @@
 				
 			</xsd:sequence>
 			<xsd:attribute name="CreatedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was created</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was updated.</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="IsAutoCreated" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Internal note if it has been autocreated.</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="id" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="Role" type="MediaItemRoleEnumList" use="optional"><xsd:annotation><xsd:documentation>Role this media item has.</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="Bytesize" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Size of the media item.</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="MimeType" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Mimetype for this MediaItem</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="MediaType" type="MediaItemTypeEnumList" use="optional"><xsd:annotation><xsd:documentation>Type of media item.</xsd:documentation></xsd:annotation></xsd:attribute>
-			<xsd:attribute name="ForeignSystemId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID from the supplier of this media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="ChangedDate" type="xsd:dateTime" use="optional"><xsd:annotation><xsd:documentation>Date and time when the media item was updated.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="IsAutoCreated" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Internal note if it has been autocreated.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="id" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID that can be used externally.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="Orientation" type="MediaItemOrientationEnumList" use="optional"><xsd:annotation><xsd:documentation>Orientation for this image.</xsd:documentation></xsd:annotation></xsd:attribute>
+            <xsd:attribute name="Width" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>Width in pixels for this image</xsd:documentation></xsd:annotation></xsd:attribute>
+            <xsd:attribute name="Height" type="xsd:nonNegativeInteger" use="optional"><xsd:annotation><xsd:documentation>Height in pixels for this image</xsd:documentation></xsd:annotation></xsd:attribute>
+            <xsd:attribute name="InternalId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>GUID for internal handling</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="Role" type="MediaItemRoleEnumList" use="optional"><xsd:annotation><xsd:documentation>Role this media item has.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="Size" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Size of the media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="MimeType" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>Mimetype for this MediaItem</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="MediaType" type="MediaItemTypeEnumList" use="optional"><xsd:annotation><xsd:documentation>Type of media item.</xsd:documentation></xsd:annotation></xsd:attribute>
+						<xsd:attribute name="ForeignSystemId" type="xsd:string" use="optional"><xsd:annotation><xsd:documentation>ID from the supplier of this media item.</xsd:documentation></xsd:annotation></xsd:attribute>
 		</xsd:complexType>
 		
 	</xsd:element>
@@ -1024,6 +1031,16 @@
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="Primary"/>
 			<xsd:enumeration value="Auxillary"/>
+      <xsd:enumeration value="Poster"/>
+      <xsd:enumeration value="Unknown"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+  	<xsd:simpleType name="MediaItemOrientationEnumList">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Landscape"/>
+			<xsd:enumeration value="Portrait"/>
+      <xsd:enumeration value="Unknown"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 
